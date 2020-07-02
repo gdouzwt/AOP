@@ -17,7 +17,7 @@
 
     <logger name="simpleaspect" level="trace" />
 
-    <logger name="org.springframework" level="info" />
+    <logger name="org.springframework" level="off" />
 
     <root level="trace">
         <appender-ref ref="STDOUT" />

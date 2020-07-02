@@ -5,6 +5,8 @@
         "Pointcut",
         "adviced",
         "adviced method",
-        "method"
+        "advicedeepdive",
+        "method",
+        "simpleaspect"
     ]
 }
