@@ -1,8 +1,8 @@
 HELP.md
 **/target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+!m8/how-aspects-are-added-to-objects/src/main/**
+!m8/how-aspects-are-added-to-objects/src/test/**
 
 ### STS ###
 .apt_generated

@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.zwt</groupId>
+    <artifactId>AOP</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>m2</module>
+        <module>m3</module>
+        <module>m4</module>
+        <module>m5</module>
+        <module>m6</module>
+        <module>m7</module>
+        <module>m8</module>
+        <module>m9</module>
+        <module>m10</module>
+        <module>m11</module>
+    </modules>
+
+</project>
