@@ -1,16 +1,15 @@
 package io.zwt.service;
 
-import org.springframework.stereotype.Service;
-
 import annotation.Trace;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SimpleService {
 
-  public void doSomething() {
-  }
+    public void doSomething() {
+    }
 
-  @Trace
-  public void annotated() {
-  }
+    @Trace
+    public void annotated() {
+    }
 }
