@@ -1,17 +1,17 @@
 package advicedeepdive;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import configuration.AdviceDeepDiveConfiguration;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AdviceDeepDiveConfiguration.class)
 public class AfterAdviceTest {
 
@@ -21,7 +21,7 @@ public class AfterAdviceTest {
     @Autowired
     SimpleService simpleService;
 
-    @Before
+    @BeforeEach
     public void reset() {
         afterAdvice.reset();
     }
@@ -33,14 +33,14 @@ public class AfterAdviceTest {
         assertTrue(afterAdvice.isAfterCalled());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void afterAspectIsCalledIfMethodThrowsException() {
+
         assertFalse(afterAdvice.isAfterCalled());
-        try {
+        assertThrows(RuntimeException.class, () -> {
             simpleService.throwsRuntimeException();
-        } finally {
-            assertTrue(afterAdvice.isAfterCalled());
-        }
+        });
+        assertTrue(afterAdvice.isAfterCalled());
     }
 
 }

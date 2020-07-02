@@ -1,17 +1,16 @@
 package advicedeepdive;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import configuration.AdviceDeepDiveConfiguration;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import configuration.AdviceDeepDiveConfiguration;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AdviceDeepDiveConfiguration.class)
 public class AfterThrowingAdviceTest {
 
@@ -21,7 +20,7 @@ public class AfterThrowingAdviceTest {
     @Autowired
     SimpleService simpleService;
 
-    @Before
+    @BeforeEach
     public void rest() {
         afterThrowingAdvice.reset();
     }
@@ -33,24 +32,24 @@ public class AfterThrowingAdviceTest {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void afterThrowingIsCalledIfMethodThrowsRuntimeException() {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
-        try {
+        assertThrows(RuntimeException.class, () -> {
             simpleService.throwsRuntimeException();
-        } finally {
-            assertTrue(afterThrowingAdvice.isAfterThrowingCalled());
-        }
+        });
+        assertTrue(afterThrowingAdvice.isAfterThrowingCalled());
     }
 
-    @Test(expected = Exception.class)
-    public void afterThrowingIsNotCalledIfMethodThrowsException() throws Exception {
+    @Test
+    public void afterThrowingIsNotCalledIfMethodThrowsException() {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
-        try {
+
+        assertThrows(Exception.class, () -> {
             simpleService.throwsException();
-        } finally {
-            assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
-        }
+        });
+
+        assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
     }
 
 }

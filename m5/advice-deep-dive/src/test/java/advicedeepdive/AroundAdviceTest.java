@@ -1,18 +1,17 @@
 package advicedeepdive;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import configuration.AdviceDeepDiveConfiguration;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import configuration.AdviceDeepDiveConfiguration;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AdviceDeepDiveConfiguration.class)
 public class AroundAdviceTest {
 
@@ -22,7 +21,7 @@ public class AroundAdviceTest {
     @Autowired
     SimpleService simpleService;
 
-    @Before
+    @BeforeEach
     public void rest() {
         aroundAspect.reset();
     }
@@ -34,20 +33,19 @@ public class AroundAdviceTest {
         assertTrue(aroundAspect.isCalled());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void aroundAdviceIsCalledIfExceptionIsThrown() {
         assertFalse(aroundAspect.isCalled());
-        try {
+        assertThrows(RuntimeException.class, () -> {
             simpleService.throwsRuntimeException();
-        } finally {
-            assertTrue(aroundAspect.isCalled());
-        }
+        });
+        assertTrue(aroundAspect.isCalled());
     }
 
     @Test
     public void aroundAdviceIsCalledIfValueIsReturned() {
         assertFalse(aroundAspect.isCalled());
-        assertThat(simpleService.returnsString(), equalTo("42"));
+        Assertions.assertEquals(simpleService.returnsString(), "42");
         assertTrue(aroundAspect.isCalled());
     }
 
