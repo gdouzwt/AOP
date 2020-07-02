@@ -12,17 +12,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("/simpleaspect.xml")
 public class SimpleAspectXMLTest {
 
-	@Autowired
-	TracingAspect tracingAspect;
+    @Autowired
+    TracingAspect tracingAspect;
 
-	@Autowired
-	SimpleService simpleService;
+    @Autowired
+    SimpleService simpleService;
 
-	@Test
-	public void aspectIsCalled() {
-		assertFalse(tracingAspect.isEnteringCalled());
-		simpleService.doSomething();
-		assertTrue(tracingAspect.isEnteringCalled());
-	}
+    @Test
+    public void aspectIsCalled() {
+        assertFalse(tracingAspect.isEnteringCalled());
+        simpleService.doSomething();
+        assertTrue(tracingAspect.isEnteringCalled());
+    }
 
 }

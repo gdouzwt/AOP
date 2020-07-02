@@ -13,20 +13,20 @@ import com.ewolff.domain.DomainObject;
 import com.ewolff.service.SimplestService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/beans.xml")
+@ContextConfiguration("classpath:beans.xml")
 public class ConfigurationBeansTest {
 
-	@Autowired
-	private SimplestService simpleService;
+    @Autowired
+    private SimplestService simpleService;
 
-	@Test
-	public void dependencyInjectionShouldWork() {
-		assertNotNull(simpleService);
-	}
+    @Test
+    public void dependencyInjectionShouldWork() {
+        assertNotNull(simpleService);
+    }
 
-	@Test
-	public void serviceShouldReturnDomainObject() {
-		assertThat(simpleService.service(), equalTo(new DomainObject()));
-	}
+    @Test
+    public void serviceShouldReturnDomainObject() {
+        assertThat(simpleService.service(), equalTo(new DomainObject()));
+    }
 
 }

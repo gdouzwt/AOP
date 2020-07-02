@@ -14,17 +14,17 @@ import configuration.SimpleAspectConfiguration;
 @ContextConfiguration(classes = SimpleAspectConfiguration.class)
 public class SimpleAspectJavaConfigTest {
 
-	@Autowired
-	TracingAspect tracingAspect;
+    @Autowired
+    TracingAspect tracingAspect;
 
-	@Autowired
-	SimpleService simpleService;
+    @Autowired
+    SimpleService simpleService;
 
-	@Test
-	public void aspectIsCalled() {
-		assertFalse(tracingAspect.isEnteringCalled());
-		simpleService.doSomething();
-		assertTrue(tracingAspect.isEnteringCalled());
-	}
+    @Test
+    public void aspectIsCalled() {
+        assertFalse(tracingAspect.isEnteringCalled());
+        simpleService.doSomething();
+        assertTrue(tracingAspect.isEnteringCalled());
+    }
 
 }
