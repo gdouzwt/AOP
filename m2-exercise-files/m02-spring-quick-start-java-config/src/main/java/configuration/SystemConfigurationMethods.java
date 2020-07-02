@@ -9,14 +9,14 @@ import com.ewolff.service.SimpleService;
 @Configuration
 public class SystemConfigurationMethods {
 
-	@Bean
-	public SimpleService simpleService() {
-		return new SimpleService();
-	}
-	
-	@Bean
-	public SimpleRepository simpleRepository() {
-		return new SimpleRepository();
-	}
-	
+    @Bean
+    public SimpleService simpleService() {
+        return new SimpleService();
+    }
+
+    @Bean
+    public SimpleRepository simpleRepository() {
+        return new SimpleRepository();
+    }
+
 }

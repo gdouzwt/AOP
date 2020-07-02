@@ -9,10 +9,10 @@ import com.ewolff.repository.SimpleRepository;
 @Service
 public class SimpleService {
 
-	@Autowired
-	SimpleRepository repository;
+    @Autowired
+    SimpleRepository repository;
 
-	public DomainObject service() {
-		return repository.findDomainObject();
-	}
+    public DomainObject service() {
+        return repository.findDomainObject();
+    }
 }

@@ -6,9 +6,9 @@ import com.ewolff.domain.DomainObject;
 
 @Repository
 public class SimpleRepository {
-	
-	public DomainObject findDomainObject() {
-		return new DomainObject();
-	}
+
+    public DomainObject findDomainObject() {
+        return new DomainObject();
+    }
 
 }
