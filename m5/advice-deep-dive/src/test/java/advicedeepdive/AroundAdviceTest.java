@@ -36,9 +36,7 @@ public class AroundAdviceTest {
     @Test
     public void aroundAdviceIsCalledIfExceptionIsThrown() {
         assertFalse(aroundAspect.isCalled());
-        assertThrows(RuntimeException.class, () -> {
-            simpleService.throwsRuntimeException();
-        });
+        assertThrows(RuntimeException.class, () -> simpleService.throwsRuntimeException());
         assertTrue(aroundAspect.isCalled());
     }
 

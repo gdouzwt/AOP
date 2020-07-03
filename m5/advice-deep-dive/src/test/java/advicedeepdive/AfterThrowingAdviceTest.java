@@ -35,9 +35,7 @@ public class AfterThrowingAdviceTest {
     @Test
     public void afterThrowingIsCalledIfMethodThrowsRuntimeException() {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
-        assertThrows(RuntimeException.class, () -> {
-            simpleService.throwsRuntimeException();
-        });
+        assertThrows(RuntimeException.class, () -> simpleService.throwsRuntimeException());
         assertTrue(afterThrowingAdvice.isAfterThrowingCalled());
     }
 
@@ -45,9 +43,7 @@ public class AfterThrowingAdviceTest {
     public void afterThrowingIsNotCalledIfMethodThrowsException() {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
 
-        assertThrows(Exception.class, () -> {
-            simpleService.throwsException();
-        });
+        assertThrows(Exception.class, () -> simpleService.throwsException());
 
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
     }

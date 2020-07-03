@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AdviceDeepDiveConfiguration.class)
-public class AfterAdviceTest {
+public class MyAdviceTest {
 
     @Autowired
     AfterAdvice afterAdvice;

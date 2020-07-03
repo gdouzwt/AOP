@@ -12,20 +12,20 @@ import org.springframework.util.StopWatch;
 @Aspect
 public class PerformanceAspect extends CallTracker {
 
-	Logger logger = LoggerFactory.getLogger(PerformanceAspect.class);
+    Logger logger = LoggerFactory.getLogger(PerformanceAspect.class);
 
-	@Around("SystemArchitecture.Repository()")
-	public void trace(ProceedingJoinPoint proceedingJP) throws Throwable {
-		String methodInformation = proceedingJP.getStaticPart().getSignature().toString();
-		StopWatch stopWatch = new StopWatch(methodInformation);
-		stopWatch.start();
-		trackCall();
-		try {
-			proceedingJP.proceed();
-		} finally {
-			stopWatch.stop();
-			logger.trace(stopWatch.shortSummary());
-		}
-	}
+    @Around("SystemArchitecture.Repository()")
+    public void trace(ProceedingJoinPoint proceedingJP) throws Throwable {
+        String methodInformation = proceedingJP.getStaticPart().getSignature().toString();
+        StopWatch stopWatch = new StopWatch(methodInformation);
+        stopWatch.start();
+        trackCall();
+        try {
+            proceedingJP.proceed();
+        } finally {
+            stopWatch.stop();
+            logger.trace(stopWatch.shortSummary());
+        }
+    }
 
 }

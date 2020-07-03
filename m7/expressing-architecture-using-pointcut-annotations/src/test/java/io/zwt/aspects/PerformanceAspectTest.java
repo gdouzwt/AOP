@@ -1,7 +1,7 @@
 package io.zwt.aspects;
 
-import static org.junit.Assert.*;
-
+import io.zwt.repository.MyRepository;
+import io.zwt.service.MyService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,39 +9,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import io.zwt.repository.MyRepository;
-import io.zwt.service.MyService;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/system-configuration.xml")
+@ContextConfiguration("classpath:system-configuration.xml")
 public class PerformanceAspectTest {
 
-	@Autowired
-	PerformanceAspect performanceAspect;
+    @Autowired
+    PerformanceAspect performanceAspect;
 
-	@Autowired
-	MyService myService;
+    @Autowired
+    MyService myService;
 
-	@Autowired
-	MyRepository myRepository;
+    @Autowired
+    MyRepository myRepository;
 
-	@Before
-	public void setUp() {
-		performanceAspect.resetCalled();
-	}
+    @Before
+    public void setUp() {
+        performanceAspect.resetCalled();
+    }
 
-	@Test
-	public void performanceIsCalledForRepositories() {
-		assertFalse(performanceAspect.isCalled());
-		myRepository.doIt();
-		assertTrue(performanceAspect.isCalled());
-	}
+    @Test
+    public void performanceIsCalledForRepositories() {
+        assertFalse(performanceAspect.isCalled());
+        myRepository.doIt();
+        assertTrue(performanceAspect.isCalled());
+    }
 
-	@Test
-	public void performanceIsNotCalledForServices() {
-		assertFalse(performanceAspect.isCalled());
-		myService.doIt();
-		assertFalse(performanceAspect.isCalled());
-	}
+    @Test
+    public void performanceIsNotCalledForServices() {
+        assertFalse(performanceAspect.isCalled());
+        myService.doIt();
+        assertFalse(performanceAspect.isCalled());
+    }
 
 }

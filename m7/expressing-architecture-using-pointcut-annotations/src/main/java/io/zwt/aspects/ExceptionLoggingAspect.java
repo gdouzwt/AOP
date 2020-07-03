@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ExceptionLoggingAspect extends CallTracker {
 
-	Logger logger = LoggerFactory.getLogger(ExceptionLoggingAspect.class);
+    Logger logger = LoggerFactory.getLogger(ExceptionLoggingAspect.class);
 
-	@AfterThrowing(pointcut = "SystemArchitecture.Repository() || SystemArchitecture.Service()", throwing = "ex")
-	public void logException(Exception ex) {
-		trackCall();
-		logger.error("Exception", ex);
-	}
+    @AfterThrowing(pointcut = "SystemArchitecture.Repository() || SystemArchitecture.Service()", throwing = "ex")
+    public void logException(Exception ex) {
+        trackCall();
+        logger.error("Exception", ex);
+    }
 
 }

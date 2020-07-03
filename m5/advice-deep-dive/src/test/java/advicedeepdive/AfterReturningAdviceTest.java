@@ -35,9 +35,7 @@ public class AfterReturningAdviceTest {
     @Test
     public void afterReturningIsNotCalledIfExceptionIsThrown() {
         assertFalse(afterReturningAdvice.isAfterReturningCalled());
-        assertThrows(RuntimeException.class, () -> {
-            simpleService.returnsStringAndThrowsRuntimeException();
-        });
+        assertThrows(RuntimeException.class, () -> simpleService.returnsStringAndThrowsRuntimeException());
         assertFalse(afterReturningAdvice.isAfterReturningCalled());
     }
 

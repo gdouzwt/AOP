@@ -25,6 +25,7 @@ public class AroundAdvice {
         called = true;
         try {
             return proceedingJP.proceed();
+            // return null;
         } catch (Throwable ex) {
             logger.error("Exception in " + methodInformation, ex);
             throw ex;
