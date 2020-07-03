@@ -1,0 +1,40 @@
+rootProject.name = 'aop'
+
+include 'm02:spring-quick-start-xml'
+include 'm02:spring-quick-start-java-config'
+
+include 'm03:why-aop'
+
+include 'm04:your-first-aspect-start'
+include 'm04:your-first-aspect-end'
+
+include 'm05:advice-deep-dive'
+
+include 'm06:pointcut-deep-dive'
+
+include 'm07:expressing-architecture-using-pointcut-annotations'
+include 'm07:expressing-architecture-using-pointcut-packages'
+
+include 'm08:how-aspects-are-added-to-objects'
+
+include 'm09:spring-aop-vs-aspectj-compile-time-weaving'
+include 'm09:spring-aop-vs-aspectj-declare-error'
+include 'm09:spring-aop-vs-aspectj-load-time-weaving'
+
+include 'm10:spring-aspect-library-tracing'
+include 'm10:spring-aspect-library-transactions'
+
+include 'm11:real-life-aspects-circuitbreaker'
+include 'm11:real-life-aspects-datacapture'
+include 'm11:real-life-aspects-exceptions'
+include 'm11:real-life-aspects-filter'
+include 'm11:real-life-aspects-jpa'
+include 'm11:real-life-aspects-retry'
+
+//we check if the modules have gradle configuration files
+rootProject.children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.exists()
+    assert project.buildFile.isFile()
+}

@@ -1,3 +1,4 @@
+/*
 package io.zwt.service;
 
 import org.slf4j.Logger;
@@ -33,3 +34,4 @@ public class PlainService {
     }
 
 }
+*/
