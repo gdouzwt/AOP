@@ -1,10 +1,9 @@
 package io.zwt.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import io.zwt.domain.DomainObject;
 import io.zwt.repository.SimpleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SimplestService {

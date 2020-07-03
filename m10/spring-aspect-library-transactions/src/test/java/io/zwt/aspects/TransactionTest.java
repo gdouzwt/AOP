@@ -1,8 +1,6 @@
 package io.zwt.aspects;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
+import io.zwt.service.PlainService;
 import io.zwt.transaction.StubPlatformTransactionManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,25 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import io.zwt.service.PlainService;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/system-configuration.xml")
 public class TransactionTest {
 
-	@Autowired
-	PlainService plainService;
+    @Autowired
+    PlainService plainService;
 
-	@Autowired
+    @Autowired
     StubPlatformTransactionManager stubPlatformTransactionManager;
 
-	@Test
-	public void callService() {
-		assertThat(stubPlatformTransactionManager.getTotal(), equalTo(0));
-		plainService.doSomething();
-		assertThat(stubPlatformTransactionManager.getTotal(), equalTo(1));
-		assertThat(stubPlatformTransactionManager.getCommit(), equalTo(1));
-	}
+    @Test
+    public void callService() {
+        assertThat(stubPlatformTransactionManager.getTotal(), equalTo(0));
+        plainService.doSomething();
+        assertThat(stubPlatformTransactionManager.getTotal(), equalTo(1));
+        assertThat(stubPlatformTransactionManager.getCommit(), equalTo(1));
+    }
 
 }

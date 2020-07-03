@@ -10,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Aspect
 public class HibernateStateSynchronizer {
 
-	@Autowired
-	private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	@Before("execution(* org.springframework.jdbc.core.JdbcTemplate.*(..) )")
-	public void flush() {
-		if (sessionFactory != null) {
-			Session session = sessionFactory.getCurrentSession();
-			if (session != null && session.isDirty()) {
-				session.flush();
-			}
-		}
-	}
+    @Before("execution(* org.springframework.jdbc.core.JdbcTemplate.*(..) )")
+    public void flush() {
+        if (sessionFactory != null) {
+            Session session = sessionFactory.getCurrentSession();
+            if (session != null && session.isDirty()) {
+                session.flush();
+            }
+        }
+    }
 
 }

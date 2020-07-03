@@ -2,18 +2,18 @@ package io.zwt.aspects;
 
 public class CallTracker {
 
-	private boolean called;
+    private boolean called;
 
-	public boolean isCalled() {
-		return called;
-	}
+    public boolean isCalled() {
+        return called;
+    }
 
-	public void resetCalled() {
-		called=false;
-	}
+    public void resetCalled() {
+        called = false;
+    }
 
-	protected void trackCall() {
-		called=true;
-	}
+    protected void trackCall() {
+        called = true;
+    }
 
 }

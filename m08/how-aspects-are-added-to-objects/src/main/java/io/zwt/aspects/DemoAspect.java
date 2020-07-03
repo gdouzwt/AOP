@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class DemoAspect extends CallTracker {
 
-	@Before("execution(void advicedMethod())")
-	public void logException() {
-		trackCall();
-	}
+    @Before("execution(void advicedMethod())")
+    public void logException() {
+        trackCall();
+    }
 
 }

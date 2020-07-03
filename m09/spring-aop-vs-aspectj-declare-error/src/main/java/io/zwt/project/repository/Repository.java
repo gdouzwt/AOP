@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class Repository {
 
-	@SuppressWarnings("null")
-	public void doSomeJDBCstuff() throws SQLException {
-		Connection connection = null;
-		connection.close();
-	}
+    @SuppressWarnings("null")
+    public void doSomeJDBCstuff() throws SQLException {
+        Connection connection = null;
+        connection.close();
+    }
 
 }

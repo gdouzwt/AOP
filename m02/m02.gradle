@@ -9,14 +9,19 @@ subprojects {
         into 'build/libs'
     }
 
-    /*dependencies {
-        implementation spring.context, spring.tx, misc.logback, misc.aspectjweaver,
-            misc.aspectjrt, hibernate.em
-        testImplementation spring.test, testing.junit5Engine
-    }*/
+    dependencies {
+        if (!project.name.endsWith("config")) {
+            implementation spring.context, spring.tx,
+                misc.logback,
+                misc.aspectjweaver,
+                misc.aspectjrt, hibernate.em
+            testImplementation spring.test, testing.junit5Engine
+        }
+    }
 
     test {
         useJUnitPlatform()
     }
+//    tasks.build.finalizedBy(copyDependencies)
 }
 

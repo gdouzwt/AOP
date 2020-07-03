@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 public class DemoClass {
 
 
-  public void advicedMethod() {
+    public void advicedMethod() {
 
-  }
+    }
 
 
-  public void callsTheAdvicedMethod() {
-    advicedMethod();
-  }
+    public void callsTheAdvicedMethod() {
+        advicedMethod();
+    }
 
 }

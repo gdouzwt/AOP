@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlainService {
 
-	@Autowired
-	private ErroneousService erroneousService;
+    @Autowired
+    private ErroneousService erroneousService;
 
-	public void doIt(int i) {
-		erroneousService.returnInt();
-		erroneousService.throwException();
-	}
+    public void doIt(int i) {
+        erroneousService.returnInt();
+        erroneousService.throwException();
+    }
 
 }

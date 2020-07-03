@@ -11,30 +11,30 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class FirstFailureDataCaptureAspect {
 
-	private ThreadLocal<CallContext> callContext = new ThreadLocal<CallContext>();
+    private ThreadLocal<CallContext> callContext = new ThreadLocal<CallContext>();
 
-	private CallContext getCallContext() {
-		CallContext result = callContext.get();
-		if (result == null) {
-			callContext.set(new CallContext());
-			result = callContext.get();
-		}
-		return result;
-	}
+    private CallContext getCallContext() {
+        CallContext result = callContext.get();
+        if (result == null) {
+            callContext.set(new CallContext());
+            result = callContext.get();
+        }
+        return result;
+    }
 
-	@AfterThrowing(value = "SystemArchitecture.Service()", throwing = "ex")
-	public void afterThrowing(Throwable ex) {
-		getCallContext().afterThrowing(ex);
-	}
+    @AfterThrowing(value = "SystemArchitecture.Service()", throwing = "ex")
+    public void afterThrowing(Throwable ex) {
+        getCallContext().afterThrowing(ex);
+    }
 
-	@Before("SystemArchitecture.Service()")
-	public void before(JoinPoint joinPoint) {
-		getCallContext().before(joinPoint);
-	}
+    @Before("SystemArchitecture.Service()")
+    public void before(JoinPoint joinPoint) {
+        getCallContext().before(joinPoint);
+    }
 
-	@AfterReturning(pointcut="SystemArchitecture.Service()", returning="result")
-	public void afterReturning(Object result) {
-		getCallContext().afterReturning(result);
-	}
+    @AfterReturning(pointcut = "SystemArchitecture.Service()", returning = "result")
+    public void afterReturning(Object result) {
+        getCallContext().afterReturning(result);
+    }
 
 }

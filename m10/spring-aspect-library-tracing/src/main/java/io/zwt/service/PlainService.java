@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlainService {
 
-	public void doSomething() {
-	}
+    public void doSomething() {
+    }
 
 }
