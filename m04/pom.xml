@@ -2,10 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.zwt</groupId>
-    <artifactId>m3</artifactId>
+    <artifactId>m04</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>why-aop</module>
+        <module>your-first-aspect-start</module>
+        <module>your-first-aspect-end</module>
     </modules>
 </project>
