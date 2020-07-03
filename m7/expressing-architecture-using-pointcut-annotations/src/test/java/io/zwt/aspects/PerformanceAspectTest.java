@@ -2,30 +2,34 @@ package io.zwt.aspects;
 
 import io.zwt.repository.MyRepository;
 import io.zwt.service.MyService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:system-configuration.xml")
 public class PerformanceAspectTest {
 
     @Autowired
     PerformanceAspect performanceAspect;
 
+    /*因为在 xml 配置里面加了 use-default-filters="false"，所以 Idea 不清楚，加红色波浪线，实际上运行没有问题*/
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     MyService myService;
 
     @Autowired
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     MyRepository myRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         performanceAspect.resetCalled();
     }

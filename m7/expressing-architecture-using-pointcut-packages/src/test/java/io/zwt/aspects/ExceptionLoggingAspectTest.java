@@ -1,51 +1,47 @@
 package io.zwt.aspects;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-
 import io.zwt.repository.MyRepository;
 import io.zwt.service.MyService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/system-configuration.xml")
+import static org.junit.jupiter.api.Assertions.*;
+
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration("classpath:system-configuration.xml")
 public class ExceptionLoggingAspectTest {
 
-	@Autowired
-	ExceptionLoggingAspect exceptionLoggingAspect;
+    @Autowired
+    ExceptionLoggingAspect exceptionLoggingAspect;
 
-	@Autowired
-	MyService myService;
+    @Autowired
+    MyService myService;
 
-	@Autowired
-	MyRepository myRepository;
+    @Autowired
+    MyRepository myRepository;
 
-	@Before
-	public void setUp() {
-		exceptionLoggingAspect.resetCalled();
-	}
+    @BeforeEach
+    public void setUp() {
+        exceptionLoggingAspect.resetCalled();
+    }
 
-	@Test
-	public void exceptionLoggingIsNotCalledIfNoExceptionIsThrown() {
-		assertFalse(exceptionLoggingAspect.isCalled());
-		myRepository.doIt();
-		assertFalse(exceptionLoggingAspect.isCalled());
-	}
+    @Test
+    public void exceptionLoggingIsNotCalledIfNoExceptionIsThrown() {
+        assertFalse(exceptionLoggingAspect.isCalled());
+        myRepository.doIt();
+        assertFalse(exceptionLoggingAspect.isCalled());
+    }
 
-	@Test(expected = RuntimeException.class)
-	public void exceptionLoggingIsCalledIfExceptionIsThrown() {
-		assertFalse(exceptionLoggingAspect.isCalled());
-		try {
-			myRepository.throwsException();
-		} finally {
-			assertTrue(exceptionLoggingAspect.isCalled());
-		}
-	}
+    @Test
+    public void exceptionLoggingIsCalledIfExceptionIsThrown() {
+        assertFalse(exceptionLoggingAspect.isCalled());
+        assertThrows(RuntimeException.class, () -> myRepository.throwsException());
+        assertTrue(exceptionLoggingAspect.isCalled());
+    }
 
 }

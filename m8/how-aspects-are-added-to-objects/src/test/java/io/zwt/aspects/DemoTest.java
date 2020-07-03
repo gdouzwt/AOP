@@ -1,45 +1,45 @@
 package io.zwt.aspects;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import configuration.SystemConfiguration;
+import io.zwt.demo.DemoClass;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import io.zwt.demo.DemoClass;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import configuration.SystemConfiguration;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=SystemConfiguration.class)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = SystemConfiguration.class)
 public class DemoTest {
 
-	@Autowired
-	DemoAspect demoAspect;
+    @Autowired
+    DemoAspect demoAspect;
 
-	@Autowired
-	DemoClass demoClass;
+    @Autowired
+    DemoClass demoClass;
 
-	@Before
-	public void setUp() {
-		demoAspect.resetCalled();
-	}
+    @BeforeEach
+    public void setUp() {
+        demoAspect.resetCalled();
+    }
 
-	@Test
-	public void directCallToAdvicedMethodIsTraced(){
-		assertFalse(demoAspect.isCalled());
-		demoClass.advicedMethod();
-		assertTrue(demoAspect.isCalled());
-	}
+    @Test
+    public void directCallToAdvisedMethodIsTraced() {
+        assertFalse(demoAspect.isCalled());
+        demoClass.advicedMethod();
+        assertTrue(demoAspect.isCalled());
+    }
 
-	@Test
-	public void indirectCallToAdvicedMethodIsNotTraced(){
-		assertFalse(demoAspect.isCalled());
-		demoClass.callsTheAdvicedMethod();
-		assertFalse(demoAspect.isCalled());
-	}
+    @Test
+    public void indirectCallToAdvisedMethodIsNotTraced() {
+        assertFalse(demoAspect.isCalled());
+        demoClass.callsTheAdvicedMethod();
+        assertFalse(demoAspect.isCalled());
+    }
 
 }

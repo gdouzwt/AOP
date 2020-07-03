@@ -6,6 +6,8 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--XML 配置 Bean 扫描的过滤器，use-default-filters="false"就不会扫描默认的stereotype，例如@Component，@Repository-->
+    <!--但是可以进一步，使用 include-filter 定义扫描条件-->
     <context:component-scan base-package="io.zwt"
                             use-default-filters="false">
         <context:include-filter type="aspectj"
@@ -15,6 +17,7 @@
         <context:include-filter type="annotation"
                                 expression="org.aspectj.lang.annotation.Aspect"/>
     </context:component-scan>
+
     <aop:aspectj-autoproxy/>
 
 </beans>
