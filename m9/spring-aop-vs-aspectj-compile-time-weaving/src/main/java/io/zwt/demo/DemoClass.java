@@ -1,14 +1,13 @@
 package io.zwt.demo;
 
 
-
 public class DemoClass {
 
-	public void advicedMethod() {
-	}
+    public void advisedMethod() {
+    }
 
-	public void callsTheAdvicedMethohd() {
-		advicedMethod();
-	}
+    public void callsTheAdvisedMethod() {
+        advisedMethod();
+    }
 
 }
