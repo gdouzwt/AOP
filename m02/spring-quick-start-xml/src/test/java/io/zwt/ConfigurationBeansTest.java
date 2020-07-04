@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration("classpath:beans.xml")
@@ -25,7 +26,7 @@ public class ConfigurationBeansTest {
 
     @Test
     public void serviceShouldReturnDomainObject() {
-        Assertions.assertEquals(simpleService.service(), new DomainObject());
+        assertEquals(simpleService.service(), new DomainObject());
     }
 
 }
