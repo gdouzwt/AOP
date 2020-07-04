@@ -14,7 +14,7 @@ public class TraceAnnotationAspect {
     Logger logger = LoggerFactory.getLogger(TraceAnnotationAspect.class);
     private int called = 0;
 
-    @Around("execution(@annotation.Trace * *(..))")
+    @Around("execution(@io.zwt.annotation.Trace * *(..))")
     public void trace(ProceedingJoinPoint proceedingJP) throws Throwable {
         String methodInformation =
             proceedingJP.getStaticPart().getSignature().getName();

@@ -14,7 +14,7 @@ public class BeanNameAspect {
     Logger logger = LoggerFactory.getLogger(BeanNameAspect.class);
     private int called = 0;
 
-    @Around("MyPointcuts.beanNamePointcut()")
+    @Around("io.zwt.pointcut.MyPointcuts.beanNamePointcut()")
     public void trace(ProceedingJoinPoint proceedingJP) throws Throwable {
         String methodInformation =
             proceedingJP.getStaticPart().getSignature().toString();

@@ -1,6 +1,6 @@
 package io.zwt.service;
 
-import annotation.Trace;
+import io.zwt.annotation.Trace;
 import org.springframework.stereotype.Service;
 
 @Service

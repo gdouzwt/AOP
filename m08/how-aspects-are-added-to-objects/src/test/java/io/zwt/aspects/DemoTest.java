@@ -1,6 +1,6 @@
 package io.zwt.aspects;
 
-import configuration.SystemConfiguration;
+import io.zwt.config.SystemConfiguration;
 import io.zwt.demo.DemoClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

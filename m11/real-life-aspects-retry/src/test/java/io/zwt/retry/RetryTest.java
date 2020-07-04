@@ -1,6 +1,6 @@
 package io.zwt.retry;
 
-import configuration.SystemConfiguration;
+import io.zwt.config.SystemConfiguration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

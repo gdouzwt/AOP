@@ -1,6 +1,6 @@
 package io.zwt.datacapture;
 
-import configuration.SystemConfiguration;
+import io.zwt.config.SystemConfiguration;
 import io.zwt.service.PlainService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

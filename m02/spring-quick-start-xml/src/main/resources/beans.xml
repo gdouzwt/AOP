@@ -6,6 +6,6 @@
     <bean class="io.zwt.repository.SimpleRepository"/>
     <bean class="io.zwt.service.SimplestService"/>
 
-    <!--    <context:annotation-config/>-->
+    <!--    <context:io.zwt.annotation-config/>-->
 
 </beans>

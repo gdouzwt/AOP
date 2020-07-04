@@ -14,8 +14,8 @@
                                 expression="io.zwt.repository.*"/>
         <context:include-filter type="aspectj"
                                 expression="io.zwt.service.*"/>
-        <context:include-filter type="annotation"
-                                expression="org.aspectj.lang.annotation.Aspect"/>
+        <context:include-filter type="io.zwt.annotation"
+                                expression="org.aspectj.lang.io.zwt.annotation.Aspect"/>
     </context:component-scan>
 
     <aop:aspectj-autoproxy/>
