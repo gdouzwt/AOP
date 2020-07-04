@@ -20,10 +20,10 @@ public class TracingAspect {
     boolean enteringCalled = false;
 
     // 改了 PointCut
+    //@Before("execution(* *(..))")
     @Before("execution(public * io.zwt..*(..))")
     public void entering(JoinPoint joinPoint) {
         enteringCalled = true;
         logger.trace("entering " + joinPoint.getStaticPart().getSignature().toString());
     }
-
 }

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration("/simpleaspect.xml")
+@ContextConfiguration("classpath:simpleaspect.xml")
 public class SimpleAspectXMLTest {
 
     @Autowired
