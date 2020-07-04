@@ -10,16 +10,14 @@ subprojects {
     }
 
     dependencies {
-        if (!project.name.endsWith("config")) {
-            implementation spring.context, misc.logback, misc.aspectjweaver, misc.aspectjrt
-            testImplementation spring.test, testing.junit5Engine
-        }
+        implementation spring.context, misc.logback, misc.aspectjweaver, misc.aspectjrt
+        testImplementation spring.test, testing.junit5Engine
     }
 
     test {
         useJUnitPlatform()
     }
-//    tasks.build.finalizedBy(copyDependencies)
+
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }

@@ -1,8 +1,3 @@
-plugins {
-    id 'java'
-    id 'io.freefair.aspectj.base' version '5.1.0'
-    id 'io.freefair.aspectj' version '5.1.0'
-}
 subprojects {
 
     group 'io.zwt'
@@ -15,11 +10,6 @@ subprojects {
         into 'build/libs'
     }
 
-    compileAspectj {
-        source("src/main/java")
-        setDestinationDir("build/classes/java/main" as File)
-    }
-
     dependencies {
         if (!project.name.endsWith("config")) {
             implementation spring.context, spring.tx, misc.logback, misc.aspectjweaver, misc.aspectjrt
@@ -30,7 +20,7 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-//    tasks.build.finalizedBy(copyDependencies)
+
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }

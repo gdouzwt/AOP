@@ -3,20 +3,11 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation boot.starter
     testImplementation(boot.starterTest) {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-}
-
-bootJar {
-    archivesBaseName = 'quick'
-    archiveVersion = ''
 }
 
 /* Spring Boot 的插件会禁用 jar，可以使用 enabled = true 打开

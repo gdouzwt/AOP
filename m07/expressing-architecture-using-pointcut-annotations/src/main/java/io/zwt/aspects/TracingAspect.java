@@ -13,7 +13,7 @@ public class TracingAspect extends CallTracker {
 
     Logger logger = LoggerFactory.getLogger(TracingAspect.class);
 
-    @Around("SystemArchitecture.Repository() || SystemArchitecture.Service()")
+    @Around("io.zwt.SystemArchitecture.Repository() || io.zwt.SystemArchitecture.Service()")
     public void trace(ProceedingJoinPoint proceedingJP) throws Throwable {
 
         String methodInformation = proceedingJP.getStaticPart().getSignature().toString();

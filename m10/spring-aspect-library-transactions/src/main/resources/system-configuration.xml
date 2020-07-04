@@ -21,7 +21,7 @@
 
     <aop:config>
         <aop:advisor advice-ref="txAdvice"
-                     pointcut="SystemArchitecture.Service()||SystemArchitecture.Repository()"/>
+                     pointcut="io.zwt.SystemArchitecture.Service()||io.zwt.SystemArchitecture.Repository()"/>
     </aop:config>
 
 </beans>

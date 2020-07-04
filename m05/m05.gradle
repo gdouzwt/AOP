@@ -19,7 +19,7 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-//    tasks.build.finalizedBy(copyDependencies)
+
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }

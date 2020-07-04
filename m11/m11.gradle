@@ -1,6 +1,3 @@
-plugins {
-    id 'java'
-}
 subprojects {
 
     group 'io.zwt'
@@ -22,7 +19,6 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-//    tasks.build.finalizedBy(copyDependencies)
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }
