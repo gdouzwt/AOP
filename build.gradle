@@ -75,7 +75,6 @@ ext {
         batchIntegration  : "org.springframework.batch:spring-batch-integration:$springBatchVersion",
         integrationFile   : "org.springframework.integration:spring-integration-file:$springIntegrationVersion",
         webflux           : "org.springframework:spring-webflux:$springVersion"
-
     ]
 
     hibernate = [
@@ -177,11 +176,6 @@ ext {
     ]
 }
 
-allprojects {
-    group = 'io.zwt'
-    version = '0.0.1-SNAPSHOT'
-}
-
 subprojects {
     version '0.0.1-SNAPSHOT'
 
@@ -194,7 +188,6 @@ subprojects {
         maven { url "https://repo.spring.io/milestone" }
         maven { url "https://repo.spring.io/libs-milestone" }
     }
-
 }
 
 tasks.withType(JavaCompile) {
