@@ -1,13 +1,13 @@
 # Aspect Oriented Programming
 
-## IDE
+构建情况：![Java CI with Gradle](https://github.com/gdouzwt/aop/workflows/Java%20CI%20with%20Gradle/badge.svg)
 
-![image-20200702175145838](img/image-20200702175145838.png)
+项目已经更新到 
 
-导入之后
+Java 11.0.7
 
-![image-20200702175313193](img/image-20200702175313193.png)
+Gradle 6.5.1
 
-推荐插件
+Spring 5.2.7.RELEASE
 
-![editorConfig](img/editorConfig.png)
+AspectJ 1.9.5
