@@ -31,8 +31,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Create downloads
-      uses: actions/upload-artifact@v1
-      with:
-        name: Package
-        path: build/libs
+    # - name: Create downloads
+    #   uses: actions/upload-artifact@v1
+    #   with:
+    #     name: Package
+    #     path: build/libs
