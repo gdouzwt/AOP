@@ -4,11 +4,11 @@ public class Customer {
 
     private String name;
 
-    private String firstname;
+    private String firstName;
 
-    public Customer(String firstname, String name) {
+    public Customer(String firstName, String name) {
         super();
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.name = name;
     }
 
@@ -16,8 +16,8 @@ public class Customer {
         return name;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Customer {
         final int prime = 31;
         int result = 1;
         result = prime * result
-            + ((firstname == null) ? 0 : firstname.hashCode());
+            + ((firstName == null) ? 0 : firstName.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
@@ -39,23 +39,18 @@ public class Customer {
         if (getClass() != obj.getClass())
             return false;
         Customer other = (Customer) obj;
-        if (firstname == null) {
-            if (other.firstname != null)
+        if (firstName == null) {
+            if (other.firstName != null)
                 return false;
-        } else if (!firstname.equals(other.firstname))
+        } else if (!firstName.equals(other.firstName))
             return false;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else return name.equals(other.name);
     }
 
     @Override
     public String toString() {
-        return "Customer [name=" + name + ", firstname=" + firstname + "]";
+        return "Customer [name=" + name + ", firstName=" + firstName + "]";
     }
-
-
 }

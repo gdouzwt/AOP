@@ -1,4 +1,3 @@
-/*
 package io.zwt.service;
 
 import org.slf4j.Logger;
@@ -21,6 +20,7 @@ public class PlainService {
         final String METHODNAME = "doSomething";
         logger.trace("entering " + CLASSNAME + "." + METHODNAME);
         TransactionStatus tx = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        //noinspection EmptyTryBlock
         try {
             // Business Logic
         } catch (RuntimeException ex) {
@@ -34,4 +34,3 @@ public class PlainService {
     }
 
 }
-*/

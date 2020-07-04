@@ -1,3 +1,45 @@
-subprojects {
-    apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'io.freefair.aspectj.base' version '5.1.0'
+    id 'io.freefair.aspectj' version '5.1.0' apply(false)
+    id "io.freefair.aspectj.post-compile-weaving" version "5.1.0" apply(false)
 }
+subprojects {
+
+    group 'io.zwt'
+    apply plugin: 'java'
+    apply plugin: 'io.freefair.aspectj.base'
+    apply plugin: 'io.freefair.aspectj'
+    sourceCompatibility = '11'
+
+    /*aspectj {
+        version '1.9.5'
+    }*/
+
+    /*if (project.name.contains("load-time")) {
+        apply plugin: 'io.freefair.aspectj.post-compile-weaving'
+    } else {
+        apply plugin: 'io.freefair.aspectj'
+    }*/
+
+    compileAspectj {
+        source("src/main/java")
+        setDestinationDir("build/classes/java/main" as File)
+    }
+
+    /*Task that copies all the dependencies under build/libs */
+    task copyDependencies(type: Copy) {
+        from configurations.runtimeClasspath
+        into 'build/libs'
+    }
+
+    dependencies {
+        implementation misc.aspectjweaver, misc.aspectjrt
+        testImplementation spring.test, testing.junit5Engine
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+

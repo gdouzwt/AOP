@@ -19,7 +19,7 @@ public class ManuallyAddingAdvice {
         proxyFactory.addAspect(demoAspect);
         DemoClass proxy = proxyFactory.getProxy();
         assertFalse(demoAspect.isCalled());
-        proxy.advicedMethod();
+        proxy.advisedMethod();
         assertTrue(demoAspect.isCalled());
     }
 }

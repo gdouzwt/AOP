@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class FirstFailureDataCaptureAspect {
 
-    private ThreadLocal<CallContext> callContext = new ThreadLocal<CallContext>();
+    private ThreadLocal<CallContext> callContext = new ThreadLocal<>();
 
     private CallContext getCallContext() {
         CallContext result = callContext.get();

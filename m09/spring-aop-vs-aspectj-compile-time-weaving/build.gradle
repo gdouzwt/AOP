@@ -1,0 +1,10 @@
+jar {
+    manifest {
+        attributes(
+            "Created-By": "Wentao Zhao",
+            "Specification-Title": "Learning Aspect Oriented Programming",
+            "Main-Class": "io.zwt.demo.CallAdvisedMethod",
+            "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' ')
+        )
+    }
+}

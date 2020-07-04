@@ -1,3 +1,35 @@
-subprojects {
-    apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'io.freefair.aspectj.base' version '5.1.0'
+    id 'io.freefair.aspectj' version '5.1.0'
 }
+subprojects {
+
+    group 'io.zwt'
+    apply plugin: 'java'
+    sourceCompatibility = '11'
+
+    /*Task that copies all the dependencies under build/libs */
+    task copyDependencies(type: Copy) {
+        from configurations.runtimeClasspath
+        into 'build/libs'
+    }
+
+    compileAspectj {
+        source("src/main/java")
+        setDestinationDir("build/classes/java/main" as File)
+    }
+
+    dependencies {
+        if (!project.name.endsWith("config")) {
+            implementation spring.context, spring.tx, misc.logback, misc.aspectjweaver, misc.aspectjrt
+            testImplementation spring.test, testing.junit5Engine
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+//    tasks.build.finalizedBy(copyDependencies)
+}
+

@@ -8,11 +8,11 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <context:component-scan base-package="com.zwt"/>
+    <context:component-scan base-package="io.zwt"/>
 
     <bean id="transactionManager" class="io.zwt.transaction.StubPlatformTransactionManager"/>
 
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:advice id="txAdvice">
         <tx:attributes>
             <tx:method name="find*" read-only="true"/>
             <tx:method name="*"/>

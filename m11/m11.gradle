@@ -1,3 +1,27 @@
-subprojects {
-    apply plugin: 'java'
+plugins {
+    id 'java'
 }
+subprojects {
+
+    group 'io.zwt'
+    apply plugin: 'java'
+    sourceCompatibility = '11'
+
+    /*Task that copies all the dependencies under build/libs */
+    task copyDependencies(type: Copy) {
+        from configurations.runtimeClasspath
+        into 'build/libs'
+    }
+
+    dependencies {
+        implementation spring.context, spring.tx, spring.jdbc, misc.logback,
+            misc.aspectjweaver, misc.aspectjrt, hibernate.em
+        testImplementation spring.test, testing.junit5Engine
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+//    tasks.build.finalizedBy(copyDependencies)
+}
+

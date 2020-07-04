@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountFilterAspect {
 
-    private ThreadLocal<Customer> currentCustomer = new ThreadLocal<Customer>();
+    private ThreadLocal<Customer> currentCustomer = new ThreadLocal<>();
 
     private Customer getCurrentCustomer() {
         return currentCustomer.get();
@@ -32,7 +32,7 @@ public class AccountFilterAspect {
             return null;
         }
         Account result = (Account) joinPoint.proceed();
-        if (customer.getFirstname().equals(result.getFirstname())
+        if (customer.getFirstName().equals(result.getFirstName())
             && customer.getName().equals(result.getName())) {
             return result;
         } else {

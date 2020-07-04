@@ -10,19 +10,19 @@ public class Account {
         return name;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     private int id;
 
     private String name;
 
-    private String firstname;
+    private String firstName;
 
-    public Account(String firstname, String name, int id) {
+    public Account(String firstName, String name, int id) {
         super();
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.name = name;
         this.id = id;
     }
@@ -33,15 +33,15 @@ public class Account {
         int result = 1;
         result = prime * result + id;
         result = prime * result
-            + ((firstname == null) ? 0 : firstname.hashCode());
+            + ((firstName == null) ? 0 : firstName.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
 
     @Override
     public String toString() {
-        return "Account [id=" + id + ", name=" + name + ", firstname="
-            + firstname + "]";
+        return "Account [id=" + id + ", name=" + name + ", firstName="
+            + firstName + "]";
     }
 
     @Override
@@ -55,18 +55,13 @@ public class Account {
         Account other = (Account) obj;
         if (id != other.id)
             return false;
-        if (firstname == null) {
-            if (other.firstname != null)
+        if (firstName == null) {
+            if (other.firstName != null)
                 return false;
-        } else if (!firstname.equals(other.firstname))
+        } else if (!firstName.equals(other.firstName))
             return false;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else return name.equals(other.name);
     }
-
-
 }

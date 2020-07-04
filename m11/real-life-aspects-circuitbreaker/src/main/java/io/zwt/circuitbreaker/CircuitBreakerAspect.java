@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 @Scope("prototype")
-@Aspect("perthis(com.ewolff.circuitbreaker.CircuitBreakerAspect.circuitBreakerMethods())")
+@Aspect("perthis(io.zwt.circuitbreaker.CircuitBreakerAspect.circuitBreakerMethods())")
 public class CircuitBreakerAspect {
 
     @Pointcut("execution(@io.zwt.circuitbreaker.CircuitBreaker * *(..))")

@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.DeclareWarning;
 public class DeclareErrorAspect {
 
     @DeclareError("(call (* java.sql..*.*(..)) || call (* javax.sql..*.*(..)))" +
-        "&& !within(com.ewolff..repository..*)")
+        "&& !within(io.zwt..repository..*)")
     public static final String jdbcOnlyInRepository = "JDBC may only be used in Repositories!";
 
 

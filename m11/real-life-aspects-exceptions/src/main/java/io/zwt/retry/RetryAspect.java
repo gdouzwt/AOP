@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RetryAspect {
 
-    @Around("execution(* com.zwt.retry..*Service.*(..))")
+    @Around("execution(* io.zwt.retry..*Service.*(..))")
     public Object retry(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             return joinPoint.proceed();

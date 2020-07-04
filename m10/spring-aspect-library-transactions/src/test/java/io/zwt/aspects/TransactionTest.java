@@ -2,18 +2,15 @@ package io.zwt.aspects;
 
 import io.zwt.service.PlainService;
 import io.zwt.transaction.StubPlatformTransactionManager;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/system-configuration.xml")
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration("classpath:system-configuration.xml")
 public class TransactionTest {
 
     @Autowired
@@ -24,10 +21,11 @@ public class TransactionTest {
 
     @Test
     public void callService() {
-        assertThat(stubPlatformTransactionManager.getTotal(), equalTo(0));
+        Assertions.assertEquals(stubPlatformTransactionManager.getTotal(), 0);
+        Assertions.assertEquals(stubPlatformTransactionManager.getTotal(), 0);
         plainService.doSomething();
-        assertThat(stubPlatformTransactionManager.getTotal(), equalTo(1));
-        assertThat(stubPlatformTransactionManager.getCommit(), equalTo(1));
+        Assertions.assertEquals(stubPlatformTransactionManager.getTotal(), 1);
+        Assertions.assertEquals(stubPlatformTransactionManager.getCommit(), 1);
     }
 
 }

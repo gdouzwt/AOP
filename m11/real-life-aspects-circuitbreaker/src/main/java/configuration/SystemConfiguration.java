@@ -6,7 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan(basePackages = "com.zwt")
+@ComponentScan(basePackages = "io.zwt")
 public class SystemConfiguration {
 
 }

@@ -31,14 +31,14 @@ public class DemoTest {
     @Test
     public void directCallToAdvisedMethodIsTraced() {
         assertFalse(demoAspect.isCalled());
-        demoClass.advicedMethod();
+        demoClass.advisedMethod();
         assertTrue(demoAspect.isCalled());
     }
 
     @Test
     public void indirectCallToAdvisedMethodIsNotTraced() {
         assertFalse(demoAspect.isCalled());
-        demoClass.callsTheAdvicedMethod();
+        demoClass.callsTheAdvisedMethod();
         assertFalse(demoAspect.isCalled());
     }
 

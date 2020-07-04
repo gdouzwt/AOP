@@ -7,7 +7,7 @@ import java.util.List;
 
 class CallContext {
 
-    private List<Call> calls = new ArrayList<Call>();
+    private List<Call> calls = new ArrayList<>();
 
     private Throwable firstFailure;
 
@@ -39,12 +39,9 @@ class CallContext {
 
     private void log(Throwable ex) {
         for (Call c : calls) {
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < c.getDepth(); i++) {
-                builder.append("    ");
-            }
-            builder.append(c.toString());
-            System.out.println(builder.toString());
+            String builder = "    ".repeat(Math.max(0, c.getDepth())) +
+                c.toString();
+            System.out.println(builder);
         }
         System.out.println("Call resulted in exception");
         ex.printStackTrace();
