@@ -3,13 +3,14 @@ package io.zwt.aspect;
 import io.zwt.configuration.SystemConfiguration;
 import io.zwt.repository.SimpleRepository;
 import io.zwt.service.SimpleService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(SpringExtension.class)
@@ -32,16 +33,16 @@ public class ClassNameAspectTest {
 
     @Test
     public void tracingOnServiceIsCalled() {
-        Assertions.assertEquals(aroundTracingAspect.getCalled(), 0);
+        assertEquals(aroundTracingAspect.getCalled(), 0);
         simpleService.doSomething();
-        Assertions.assertEquals(aroundTracingAspect.getCalled(), 1);
+        assertEquals(aroundTracingAspect.getCalled(), 1);
     }
 
     @Test
     public void tracingOnRepositoryIsNotCalled() {
-        Assertions.assertEquals(aroundTracingAspect.getCalled(), 0);
+        assertEquals(aroundTracingAspect.getCalled(), 0);
         simpleRepository.doSomething();
-        Assertions.assertEquals(aroundTracingAspect.getCalled(), 0);
+        assertEquals(aroundTracingAspect.getCalled(), 0);
     }
 
 }

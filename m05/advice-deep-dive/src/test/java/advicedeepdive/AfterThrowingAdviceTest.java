@@ -42,9 +42,7 @@ public class AfterThrowingAdviceTest {
     @Test
     public void afterThrowingIsNotCalledIfMethodThrowsException() {
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
-
         assertThrows(Exception.class, () -> simpleService.throwsException());
-
         assertFalse(afterThrowingAdvice.isAfterThrowingCalled());
     }
 

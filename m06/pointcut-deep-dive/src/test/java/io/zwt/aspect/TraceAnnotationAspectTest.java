@@ -2,13 +2,14 @@ package io.zwt.aspect;
 
 import io.zwt.configuration.SystemConfiguration;
 import io.zwt.service.SimpleService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @ExtendWith(SpringExtension.class)
@@ -28,16 +29,16 @@ public class TraceAnnotationAspectTest {
 
     @Test
     public void tracingOnNotAnnotatedMethodIsNotCalled() {
-        Assertions.assertEquals(traceAnnotationAspect.getCalled(), 0);
+        assertEquals(traceAnnotationAspect.getCalled(), 0);
         simpleService.doSomething();
-        Assertions.assertEquals(traceAnnotationAspect.getCalled(), 0);
+        assertEquals(traceAnnotationAspect.getCalled(), 0);
     }
 
     @Test
     public void tracingOnAnnotatedMethodIsCalled() {
-        Assertions.assertEquals(traceAnnotationAspect.getCalled(), 0);
+        assertEquals(traceAnnotationAspect.getCalled(), 0);
         simpleService.annotated();
-        Assertions.assertEquals(traceAnnotationAspect.getCalled(), 1);
+        assertEquals(traceAnnotationAspect.getCalled(), 1);
     }
 
 }

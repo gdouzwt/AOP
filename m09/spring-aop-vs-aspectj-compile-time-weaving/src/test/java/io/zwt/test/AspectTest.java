@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-class AspectJDemoTest {
+public class AspectTest {
 
     @Test
     public void adviceIsCalled() {

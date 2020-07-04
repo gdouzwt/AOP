@@ -2,12 +2,13 @@ package io.zwt.datacapture;
 
 import configuration.SystemConfiguration;
 import io.zwt.service.PlainService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SystemConfiguration.class)
@@ -18,7 +19,7 @@ public class DataCaptureTest {
 
     @Test
     public void test() {
-        Assertions.assertThrows(RuntimeException.class,
+        assertThrows(RuntimeException.class,
             () -> plainServer.doIt(42));
     }
 }
