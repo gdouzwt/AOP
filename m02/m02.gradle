@@ -10,8 +10,8 @@ subprojects {
     }
 
     dependencies {
-            implementation spring.context, spring.tx, misc.logback
-            testImplementation spring.test, testing.junit5Engine
+        implementation spring.context, spring.tx, misc.logback
+        testImplementation spring.test, testing.junit5Engine
     }
 
     test {

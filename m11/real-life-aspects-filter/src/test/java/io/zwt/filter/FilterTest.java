@@ -1,7 +1,7 @@
 package io.zwt.filter;
 
-import io.zwt.config.SystemConfiguration;
 import io.zwt.aspect.AccountFilterAspect;
+import io.zwt.config.SystemConfiguration;
 import io.zwt.domain.Account;
 import io.zwt.domain.Customer;
 import io.zwt.repository.AccountRepository;

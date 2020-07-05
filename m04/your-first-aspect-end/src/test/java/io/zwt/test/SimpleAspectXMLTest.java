@@ -1,8 +1,8 @@
 package io.zwt.test;
 
 
-import io.zwt.service.SimpleService;
 import io.zwt.aspect.TracingAspect;
+import io.zwt.service.SimpleService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
