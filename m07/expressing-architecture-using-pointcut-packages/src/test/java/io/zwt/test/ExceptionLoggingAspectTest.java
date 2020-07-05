@@ -1,5 +1,6 @@
-package io.zwt.aspects;
+package io.zwt.test;
 
+import io.zwt.aspects.ExceptionLoggingAspect;
 import io.zwt.repository.MyRepository;
 import io.zwt.service.MyService;
 import org.junit.jupiter.api.BeforeEach;
